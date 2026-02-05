@@ -3,6 +3,24 @@
 // convenience to get you started writing code faster.
 //
 
-export const age = () => {
-  throw new Error('Remove this line and implement the function');
-};
+export function age(planet, seconds) {
+  const EARTH_YEAR_SECONDS = 31557600;
+  const earthYears = seconds / EARTH_YEAR_SECONDS;
+
+  const orbitalPeriods = {
+    mercury: 0.2408467,
+    venus: 0.61519726,
+    earth: 1.0,
+    mars: 1.8808158,
+    jupiter: 11.862615,
+    saturn: 29.447498,
+    uranus: 84.016846,
+    neptune: 164.79132,
+  };
+
+  if (!orbitalPeriods[planet]) {
+    throw new Error("not a planet");
+  }
+
+  return Number((earthYears / orbitalPeriods[planet]).toFixed(2));
+}
